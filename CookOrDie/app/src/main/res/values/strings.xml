@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">CookOrDie</string>
+    <string name="app_name">Cook Or Die</string>
+    <string name="recetas">Recetas</string>
+    <string name="about">About Us</string>
+    <string name="ingredientes">Ingredientes</string>
+    <string name="preparacion">Preparacion</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
