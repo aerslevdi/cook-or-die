@@ -1,6 +1,8 @@
 package com.example.digital.cookordie;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,12 +17,13 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class RecetaView extends Fragment {
-    private static final String KEY_TITULO = "titulo";
-    private static final String KEY_IMAGE = "foto";
-    private static final String KEY_INGREDIENTES = "ingredientes";
-    private static final String KEY_PREPARACION = "preparacion";
+    public static final String KEY_TITULO = "titulo";
+    public static final String KEY_IMAGE = "foto";
+    public static final String KEY_INGREDIENTES = "ingredientes";
+    public static final String KEY_PREPARACION = "preparacion";
 
     public static RecetaView fabrica(Receta dato){
+
         RecetaView fragment = new RecetaView();
 
         Bundle bundle = new Bundle();
@@ -44,6 +47,8 @@ public class RecetaView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view  = inflater.inflate(R.layout.fragment_receta_view, container, false);
 
         // Obtengo el bundle
         Bundle bundle = getArguments();
@@ -52,9 +57,6 @@ public class RecetaView extends Fragment {
         Integer imagen = bundle.getInt(KEY_IMAGE);
         String ingredientes = bundle.getString(KEY_INGREDIENTES);
         String preparacion= bundle.getString(KEY_PREPARACION);
-
-        // Inflate the layout for this fragment
-        View view  = inflater.inflate(R.layout.fragment_receta_view, container, false);
 
         // Busco componentes
         TextView tituloView = view.findViewById(R.id.tituloView);
@@ -74,4 +76,8 @@ public class RecetaView extends Fragment {
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 }

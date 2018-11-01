@@ -2,6 +2,8 @@ package com.example.digital.cookordie;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +11,29 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder>{
+public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
 
     private List<Receta> recetas;
+    private List<Fragment> fragments;
+    private AdapterListener adapterListener;
+
 
     //CONSTRUCTOR
 
 
-    public Adapter(List<Receta> recetas) {
+    public Adapter(List<Receta> recetas,AdapterListener adapterListener) {
+
         this.recetas = recetas;
+        this.adapterListener = adapterListener;
+
+        fragments = new ArrayList<>();
+        for(Receta dato: recetas){
+            RecetaView fragment = RecetaView.fabrica(dato);
+            fragments.add(fragment);
+        }
     }
 
     @NonNull
@@ -44,10 +58,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder>{
 
     }
 
-    public interface AdapterListener {
-        void recibir (Receta receta);
-    }
 
+
+    //INTERFAZ
+
+
+
+    //VIEWHOLDER
     class RecetaViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView imagen;
@@ -57,11 +74,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder>{
             super(itemView);
             titulo = itemView.findViewById(R.id.tituloReceta);
             imagen = itemView.findViewById(R.id.imageReceta);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Receta receta = recetas.get(getAdapterPosition());
+                   adapterListener.recibir(receta);
+
+
+                }
+            });
+
 
         }
+
+
         public void cargar (Receta receta){
             titulo.setText(receta.getTitulo());
             imagen.setImageResource(receta.getFoto());
         }
+    }
+    public interface AdapterListener {
+        void recibir(Receta receta);
     }
 }

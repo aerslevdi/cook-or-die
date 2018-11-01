@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecetaView">
+    tools:context=".RecetaView"
+    android:background="#ffffff">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:id="@+id/tituloView"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/imagenView"
+                android:layout_margin="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tituloIngredientes"
+                android:text="@string/ingredientes"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:id="@+id/ingredientesView"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preparacion"
+                android:layout_margin="5dp"
+                android:id="@+id/tituloPreparacion"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/preparacionView"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:id="@+id/tituloView"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:id="@+id/imagenView"
-            android:layout_toRightOf="@id/tituloView"
-            android:layout_margin="5dp"
-            />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tituloIngredientes"
-        android:text="@string/ingredientes"
-        android:layout_margin="5dp"
-        android:layout_below="@id/imagenView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tituloIngredientes"
-        android:layout_margin="5dp"
-        android:id="@+id/ingredientesView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/preparacion"
-        android:layout_margin="5dp"
-        android:id="@+id/tituloPreparacion"
-        android:layout_below="@id/ingredientesView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/preparacionView"
-        android:layout_margin="5dp"
-        android:layout_below="@id/tituloPreparacion"/>
 
 
-</RelativeLayout>
+
+</LinearLayout>
