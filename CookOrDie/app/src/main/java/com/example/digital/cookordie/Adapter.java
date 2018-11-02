@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,6 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
 
     private List<Receta> recetas;
-    private List<Fragment> fragments;
     private AdapterListener adapterListener;
 
 
@@ -28,12 +28,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
 
         this.recetas = recetas;
         this.adapterListener = adapterListener;
-
-        fragments = new ArrayList<>();
-        for(Receta dato: recetas){
-            RecetaView fragment = RecetaView.fabrica(dato);
-            fragments.add(fragment);
-        }
     }
 
     @NonNull
@@ -59,8 +53,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
     }
 
 
-
-    //INTERFAZ
 
 
 

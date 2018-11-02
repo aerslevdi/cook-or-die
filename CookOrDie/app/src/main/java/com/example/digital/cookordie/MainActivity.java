@@ -16,7 +16,6 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity implements RecyclerRecipe.RecyclerListener{
 
     private DrawerLayout drawerMenu;
-    private RecetaView recetaView = new RecetaView();
 
 
     @Override
@@ -74,18 +73,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerRecipe.Re
 
     @Override
     public void enviar(Receta receta) {
-
+        Intent intent = new Intent(MainActivity.this, RecipeView.class);
         Bundle bundle = new Bundle();
-        bundle.putString(recetaView.KEY_TITULO, receta.getTitulo());
-        bundle.putInt(recetaView.KEY_IMAGE, receta.getFoto());
-        bundle.putString(recetaView.KEY_INGREDIENTES, receta.getIngredientes());
-        bundle.putString(recetaView.KEY_PREPARACION, receta.getPreparacion());
+        bundle.putString(RecetaView.KEY_TITULO, receta.getTitulo());
+        bundle.putInt(RecetaView.KEY_IMAGE, receta.getFoto());
+        bundle.putString(RecetaView.KEY_INGREDIENTES, receta.getIngredientes());
+        bundle.putString(RecetaView.KEY_PREPARACION, receta.getPreparacion());
+        intent.putExtras(bundle);
+        startActivity(intent);
 
-        recetaView.setArguments(bundle);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, recetaView);
-        fragmentTransaction.commit();
     }
 }

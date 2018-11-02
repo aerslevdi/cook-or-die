@@ -6,51 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".RecetaView"
     android:background="#ffffff">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:id="@+id/tituloView"/>
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
+            android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imagenView"
-                android:layout_margin="5dp"
-                />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:scaleType="centerCrop" />
 
             <TextView
+                android:id="@+id/tituloView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="125dp"
+                android:layout_marginTop="196dp"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+
+
+            <TextView
                 android:id="@+id/tituloIngredientes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imagenView"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="96dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/ingredientes"
-                android:layout_margin="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:id="@+id/ingredientesView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/preparacion"
-                android:layout_margin="5dp"
-                android:id="@+id/tituloPreparacion"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/preparacionView"
-                android:layout_margin="5dp"/>
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/ingredientesView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tituloIngredientes"
+                android:layout_margin="5dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tituloPreparacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ingredientesView"
+                android:layout_alignEnd="@+id/tituloIngredientes"
+                android:layout_marginTop="49dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/preparacion"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/preparacionView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tituloPreparacion"
+                android:layout_margin="5dp"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
 
     </ScrollView>
 

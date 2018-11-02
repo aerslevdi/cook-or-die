@@ -12,6 +12,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +39,15 @@ public class RecetaView extends Fragment {
         fragment.setArguments(bundle);
 
         return fragment;
+    }
+    public static List<Fragment> fabricaLista (List<Receta> dato){
+        List<Fragment> fragments = new ArrayList<>();
+        for (Receta receta : dato){
+
+            RecetaView recetaView = RecetaView.fabrica(receta);
+            fragments.add(recetaView);
+        }
+        return fragments;
     }
 
 
