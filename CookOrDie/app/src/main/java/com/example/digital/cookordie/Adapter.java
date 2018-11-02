@@ -71,7 +71,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
                 public void onClick(View v) {
 
                     Receta receta = recetas.get(getAdapterPosition());
-                   adapterListener.recibir(receta);
+                   adapterListener.recibir(receta, getAdapterPosition());
 
 
                 }
@@ -87,6 +87,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
         }
     }
     public interface AdapterListener {
-        void recibir(Receta receta);
+        void recibir(Receta receta, Integer posicion);
     }
 }

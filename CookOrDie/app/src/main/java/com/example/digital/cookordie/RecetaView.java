@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class RecetaView extends Fragment {
     public static final String KEY_INGREDIENTES = "ingredientes";
     public static final String KEY_PREPARACION = "preparacion";
 
+
     public static RecetaView fabrica(Receta dato){
 
         RecetaView fragment = new RecetaView();
@@ -35,26 +38,15 @@ public class RecetaView extends Fragment {
         bundle.putInt(RecetaView.KEY_IMAGE, dato.getFoto());
         bundle.putString(RecetaView.KEY_INGREDIENTES, dato.getIngredientes());
         bundle.putString(RecetaView.KEY_PREPARACION, dato.getPreparacion());
-
         fragment.setArguments(bundle);
 
         return fragment;
-    }
-    public static List<Fragment> fabricaLista (List<Receta> dato){
-        List<Fragment> fragments = new ArrayList<>();
-        for (Receta receta : dato){
-
-            RecetaView recetaView = RecetaView.fabrica(receta);
-            fragments.add(recetaView);
-        }
-        return fragments;
     }
 
 
     public RecetaView() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +75,7 @@ public class RecetaView extends Fragment {
         imageView.setImageResource(imagen);
         ingredientesView.setText(ingredientes);
         preparacionView.setText(preparacion);
+
 
 
         return view;

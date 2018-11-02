@@ -54,13 +54,13 @@ public class RecyclerRecipe extends Fragment implements Adapter.AdapterListener 
     }
 
     @Override
-    public void recibir(Receta receta) {
-        recyclerListener.enviar(receta);
+    public void recibir(Receta receta, Integer posicion) {
+        recyclerListener.enviar(receta, posicion);
     }
 
     //INTERFAZ
     public interface RecyclerListener {
-        void enviar(Receta receta);
+        void enviar(Receta receta, Integer posicion);
     }
 
     //ON ATTACH
@@ -70,4 +70,5 @@ public class RecyclerRecipe extends Fragment implements Adapter.AdapterListener 
         super.onAttach(context);
         this.recyclerListener = (RecyclerListener) context;
     }
+
 }

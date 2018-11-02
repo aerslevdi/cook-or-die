@@ -72,14 +72,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerRecipe.Re
 
 
     @Override
-    public void enviar(Receta receta) {
+    public void enviar(Receta receta, Integer posicion) {
         Intent intent = new Intent(MainActivity.this, RecipeView.class);
         Bundle bundle = new Bundle();
+
         bundle.putString(RecetaView.KEY_TITULO, receta.getTitulo());
         bundle.putInt(RecetaView.KEY_IMAGE, receta.getFoto());
         bundle.putString(RecetaView.KEY_INGREDIENTES, receta.getIngredientes());
         bundle.putString(RecetaView.KEY_PREPARACION, receta.getPreparacion());
+        bundle.putInt(RecipeView.KEY_POS, posicion);
         intent.putExtras(bundle);
+
         startActivity(intent);
 
     }
