@@ -12,8 +12,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 
-public class MainActivity extends AppCompatActivity implements RecyclerRecipe.RecyclerListener{
+public class MainActivity extends AppCompatActivity implements RecyclerRecipe.RecyclerListener {
 
     private DrawerLayout drawerMenu;
 
@@ -86,4 +87,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerRecipe.Re
         startActivity(intent);
 
     }
+
+
 }

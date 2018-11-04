@@ -9,25 +9,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> implements Filterable {
 
     private List<Receta> recetas;
     private AdapterListener adapterListener;
+    private List<Receta> recetasFiltered;
 
 
     //CONSTRUCTOR
 
 
-    public Adapter(List<Receta> recetas,AdapterListener adapterListener) {
+    public Adapter(List<Receta> recetas,AdapterListener adapterListener, List<Receta> recetasFiltered) {
 
         this.recetas = recetas;
         this.adapterListener = adapterListener;
+        this.recetasFiltered = recetas;
     }
 
     @NonNull
@@ -52,9 +56,41 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecetaViewHolder> {
 
     }
 
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String respuesta = constraint.toString();
+                if (respuesta.isEmpty()){
+                    recetasFiltered = recetas;
+                } else {
+                    List<Receta>filter = new ArrayList<>();
+                    for (Receta receta : recetas){
+                        if (receta.getTitulo().toLowerCase().contains(respuesta.toLowerCase())){
+                            filter.add(receta);
+                        }
+                    }
+                   recetasFiltered = filter;
 
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = recetasFiltered;
+                return filterResults;
+            }
 
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+            recetasFiltered = (ArrayList<Receta>)results.values;
+            notifyDataSetChanged();
+            }
+        };
+    }
 
+    //INTERFACE-SEARCH
+    public interface SearchListener {
+        void recetaSeleccion (Receta receta);
+    }
 
     //VIEWHOLDER
     class RecetaViewHolder extends RecyclerView.ViewHolder{
